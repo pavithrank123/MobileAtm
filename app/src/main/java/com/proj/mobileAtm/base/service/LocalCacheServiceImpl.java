@@ -34,6 +34,8 @@ public class LocalCacheServiceImpl implements LocalCacheService {
     private String STORED_PASS = "saved-pass";
     private String SESSION_PASS = "session-pass";
 
+    private final double CHANGE_PERCENTAGE = 0.5;
+
     @Inject
     public LocalCacheServiceImpl(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
@@ -136,16 +138,23 @@ public class LocalCacheServiceImpl implements LocalCacheService {
         int amountLeft = getAmountAvailableInBank(enteredAmount, hundredRupeeNote, fiveHundredRupeeNote, twoThousandRupeeNote);
 
         if(amountLeft == 0){
-            int processingAmount = enteredAmount;
-            //Proceed to transfer
-            int twoThousandUsed = Math.min(processingAmount / twoThousandRupeeNote.getValue(),twoThousandRupeeNote.getAvailable());
-            processingAmount = processingAmount - twoThousandUsed* twoThousandRupeeNote.getValue();
 
-            int fiveHundRedUsed = Math.min(processingAmount / fiveHundredRupeeNote.getValue(), fiveHundredRupeeNote.getAvailable());
-            processingAmount = processingAmount - fiveHundRedUsed * fiveHundredRupeeNote.getValue();
+            int bulkCurrency = (int) (enteredAmount * CHANGE_PERCENTAGE);
+            if(bulkCurrency % 100 != 0 ){
+                int nextRoundingValue = bulkCurrency/100;
+                bulkCurrency = nextRoundingValue *100;
+            }
+            int smallCurrency = enteredAmount - bulkCurrency;
 
-            int hundredUsed = Math.min(processingAmount / hundredRupeeNote.getValue(),hundredRupeeNote.getAvailable());
-            processingAmount = processingAmount - hundredUsed * hundredRupeeNote.getValue();
+            int twoThousandUsed = Math.min(bulkCurrency / twoThousandRupeeNote.getValue(),twoThousandRupeeNote.getAvailable());
+            bulkCurrency = bulkCurrency - twoThousandUsed* twoThousandRupeeNote.getValue();
+
+            int totalAmountLeft = smallCurrency+bulkCurrency;
+            int fiveHundRedUsed = Math.min(totalAmountLeft / fiveHundredRupeeNote.getValue(), fiveHundredRupeeNote.getAvailable());
+            totalAmountLeft = totalAmountLeft - fiveHundRedUsed * fiveHundredRupeeNote.getValue();
+
+            int hundredUsed = Math.min(totalAmountLeft / hundredRupeeNote.getValue(),hundredRupeeNote.getAvailable());
+            totalAmountLeft = totalAmountLeft - hundredUsed * hundredRupeeNote.getValue();
 
             final CurrencyTypes.FiveHundredRupeeNote updatedFiveHundred = new CurrencyTypes.FiveHundredRupeeNote(fiveHundredRupeeNote.getAvailable() - fiveHundRedUsed);
             final CurrencyTypes.TwoThousandRupeeNote updatedTwoThousand = new CurrencyTypes.TwoThousandRupeeNote(twoThousandRupeeNote.getAvailable() - twoThousandUsed);
@@ -244,16 +253,17 @@ public class LocalCacheServiceImpl implements LocalCacheService {
     }
 
     private int getAmountAvailableInBank(int enteredAmount, Notes hundredRupeeNote, Notes fiveHundredRupeeNote, Notes twoThousandRupeeNote) {
+        //3900
         if(twoThousandRupeeNote.getAvailable() > 0 && enteredAmount > 0){
             int twoThousandCurrency = enteredAmount / twoThousandRupeeNote.getValue();
             enteredAmount = enteredAmount - Math.min(twoThousandCurrency,twoThousandRupeeNote.getAvailable()) * twoThousandRupeeNote.getValue();
         }
-
+        //1900
         if(fiveHundredRupeeNote.getAvailable() > 0 && enteredAmount > 0){
             int fiveHundRedCurrency = enteredAmount / fiveHundredRupeeNote.getValue();
             enteredAmount = enteredAmount - Math.min(fiveHundRedCurrency,fiveHundredRupeeNote.getAvailable()) * fiveHundredRupeeNote.getValue();
         }
-
+        //
         if(hundredRupeeNote.getAvailable() > 0 && enteredAmount > 0 ){
             int hundredCurrency = enteredAmount / hundredRupeeNote.getValue();
             enteredAmount = enteredAmount - Math.min(hundredCurrency,hundredRupeeNote.getAvailable()) * hundredRupeeNote.getValue();

@@ -21,7 +21,7 @@ public class Constants {
     public static final String BOLD_FONT_TYPE = "bold";
     public static final String ITALIC_FONT_TYPE = "italic";
 
-    public static final int ATM_GEO_RADIUS = 100;
+    public static final int ATM_GEO_RADIUS = 200;
 
     public static final String ATM_LATITUDE = "13.118922";
     public static final String ATM_LONGITUDE = "80.059355";

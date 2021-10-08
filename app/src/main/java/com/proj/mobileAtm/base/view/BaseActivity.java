@@ -108,16 +108,15 @@ public abstract class BaseActivity<B extends ViewDataBinding> extends DaggerAppC
 
 
     private void checkUserDetails() {
-//        if(sharedPreferenceService.getWarningCount() >= Constants.WARNING_COUNT_LIMIT){
-//            showNonDismissableDialog(this, "BLOCKED", "You are blocked from using remote atm");
-//        } else {
-//            if(validateMockGpsUsed()){
+        if(sharedPreferenceService.getWarningCount() >= Constants.WARNING_COUNT_LIMIT){
+            showNonDismissableDialog(this, "BLOCKED", "You are blocked from using remote atm");
+        } else {
+            if(validateMockGpsUsed()){
                 if(validateUserLocation()){
                     clearAlertDialog();
                 }
-//            }
-
-//        }
+            }
+        }
     }
 
     public B bindView(Activity activity, int layoutId) {
