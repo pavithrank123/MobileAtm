@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_dashboard">
+
+        <TextView
+            android:id="@+id/helloUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HELLO USER"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvChooseServiceText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PLEASE CHOOSE SERVICES"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvCashWithdrawl"/>
+
+        <TextView
+            android:id="@+id/tvCashWithdrawl"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/cashwithdrawl"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:onClick="@{()-> dashboardViewmodel.handleCashWithdraw()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvQuickWithdraw"
+            app:layout_constraintBottom_toTopOf="@+id/MiniStatement"/>
+
+        <TextView
+            android:id="@+id/tvQuickWithdraw"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/quickwithdraw"
+            android:textSize="18sp"
+            android:onClick="@{()-> dashboardViewmodel.handleQuickWithdraw()}"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvCashWithdrawl"
+            app:layout_constraintBottom_toTopOf="@+id/MiniStatement"/>
+
+
+
+        <TextView
+            android:id="@+id/MiniStatement"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/ministatement"
+            android:onClick="@{()-> dashboardViewmodel.handleRecentTransactions()}"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvTransfer"
+            app:layout_constraintBottom_toTopOf="@+id/tvOthers"/>
+
+        <TextView
+            android:id="@+id/tvTransfer"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/transfer"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/MiniStatement"
+            app:layout_constraintBottom_toTopOf="@+id/tvOthers"/>
+
+        <TextView
+            android:id="@+id/tvOthers"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/others"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvBalance"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvBalance"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/balance"
+            android:onClick="@{()-> dashboardViewmodel.handleBalanceOnclick()}"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvOthers"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="dashboardViewmodel"
+            type="com.proj.mobileAtm.dashboard.model.viewmodel.DashboardViewModel" />
+
+    </data>
+
+</layout>

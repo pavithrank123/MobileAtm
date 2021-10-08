@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rlBaseContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey">
+
+
+        <include
+            android:id="@+id/layout_actionbar_common"
+            layout="@layout/layout_common_action_bar"/>
+
+        <FrameLayout
+            android:id="@+id/flMainContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/layout_actionbar_common"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <include
+            android:id="@+id/layoutCommonError"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_actionbar_common"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="@{viewModel.transactionError? View.VISIBLE: View.GONE}"
+            layout="@layout/layout_common_error"/>
+
+        <RelativeLayout
+            android:id="@+id/rlLoader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#cc000000"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{viewModel.apiLoading ? View.VISIBLE: View.GONE}">
+
+            <ProgressBar
+                android:id="@+id/progressBarSmall"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/white"
+                android:progressTint="@color/white"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progressBarSmall"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/loading"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.proj.mobileAtm.base.model.viewmodel.BaseViewModel" />
+    </data>
+
+</layout>

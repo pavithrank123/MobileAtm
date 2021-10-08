@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="launcherViewmodel"
+            type="com.proj.mobileAtm.dashboard.model.viewmodel.LauncherViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivBannerImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/banner"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:background="@drawable/background_cardview"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvAtmDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="MOBILE ATM "
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/ivBannerImage"/>
+
+        <TextView
+            android:id="@+id/tvProceed"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="ENTER"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:onClick="@{(v) -> launcherViewmodel.onClickEnter(v)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAtmDesc"
+            app:layout_constraintVertical_bias="0.7" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.proj.mobileAtm.authentication.constants.KeyboardInputConstants"/>
+
+        <variable
+            name="keyboardViewModel"
+            type="com.proj.mobileAtm.authentication.model.viewmodel.KeyBoardViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvOne"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="1"
+            android:textStyle="bold"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_ONE)}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/tvTwo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvFour" />
+
+        <TextView
+            android:id="@+id/tvTwo"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="2"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_TWO)}"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvThree"
+            app:layout_constraintStart_toEndOf="@+id/tvOne"
+            app:layout_constraintBottom_toTopOf="@+id/tvFour" />
+
+        <TextView
+            android:id="@+id/tvThree"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_THREE)}"
+            app:layout_constraintEnd_toStartOf="@+id/glGuideline"
+            app:layout_constraintStart_toEndOf="@+id/tvTwo"
+            app:layout_constraintBottom_toTopOf="@+id/tvFour"/>
+
+        <TextView
+            android:id="@+id/tvSeven"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="7"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_SEVEN)}"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvEight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvZero" />
+
+        <TextView
+            android:id="@+id/tvEight"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="8"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_EIGHT)}"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvNine"
+            app:layout_constraintStart_toEndOf="@+id/tvSeven"
+            app:layout_constraintBottom_toTopOf="@+id/tvZero" />
+
+        <TextView
+            android:id="@+id/tvNine"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="9"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_NINE)}"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/glGuideline"
+            app:layout_constraintStart_toEndOf="@+id/tvEight"
+            app:layout_constraintBottom_toTopOf="@+id/tvZero"/>
+
+        <TextView
+            android:id="@+id/tvFour"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="4"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_FOUR)}"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/tvFive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvSeven"/>
+
+        <TextView
+            android:id="@+id/tvFive"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="5"
+            android:textStyle="bold"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_FIVE)}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/tvSix"
+            app:layout_constraintStart_toEndOf="@+id/tvFour"
+            app:layout_constraintBottom_toTopOf="@+id/tvSeven"/>
+
+        <TextView
+            android:id="@+id/tvSix"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="6"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_SIX)}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/glGuideline"
+            app:layout_constraintStart_toEndOf="@+id/tvFive"
+            app:layout_constraintBottom_toTopOf="@+id/tvSeven" />
+
+
+        <TextView
+            android:id="@+id/tvZero"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:text="0"
+            android:textStyle="bold"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.KEY_ZERO)}"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/tvSeven"
+            app:layout_constraintEnd_toEndOf="@id/tvEight"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/tvErase"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:src="@drawable/icn_delete"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:onClick="@{(v)-> keyboardViewModel.handleClick(v,KeyboardInputConstants.DELETE)}"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintStart_toStartOf="@+id/tvNine"
+            app:layout_constraintEnd_toEndOf="@+id/tvNine"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

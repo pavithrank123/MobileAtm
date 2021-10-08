@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1734375" />
+        <entry key="app/src/main/res/drawable/background_blue_card.xml" value="0.15462962962962962" />
+        <entry key="app/src/main/res/drawable/background_button.xml" value="0.15462962962962962" />
+        <entry key="app/src/main/res/drawable/background_card.xml" value="0.1171875" />
+        <entry key="app/src/main/res/drawable/background_cardview.xml" value="0.15462962962962962" />
+        <entry key="app/src/main/res/drawable/background_dashboar.xml" value="0.31145833333333334" />
+        <entry key="app/src/main/res/drawable/background_input_text.xml" value="0.31145833333333334" />
+        <entry key="app/src/main/res/drawable/background_password_input.xml" value="0.15462962962962962" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.17395833333333333" />
+        <entry key="app/src/main/res/drawable/icn_delete.xml" value="0.31145833333333334" />
+        <entry key="app/src/main/res/drawable/icn_payment_failure.xml" value="0.31145833333333334" />
+        <entry key="app/src/main/res/drawable/icn_transaction_success.xml" value="0.31145833333333334" />
+        <entry key="app/src/main/res/drawable/layout_common_action_bar.xml" value="0.31145833333333334" />
+        <entry key="app/src/main/res/layout/act_balance.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/act_base.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/act_dashboard.xml" value="0.24055990051695866" />
+        <entry key="app/src/main/res/layout/act_launcher.xml" value="0.28346456692913385" />
+        <entry key="app/src/main/res/layout/act_transaction.xml" value="0.2281901285136667" />
+        <entry key="app/src/main/res/layout/act_transaction_list.xml" value="0.2416590224879248" />
+        <entry key="app/src/main/res/layout/act_user_auth_activity.xml" value="0.14011131882775626" />
+        <entry key="app/src/main/res/layout/adapter_item.xml" value="0.3139922645630278" />
+        <entry key="app/src/main/res/layout/layout_common_action_bar.xml" value="0.1578125" />
+        <entry key="app/src/main/res/layout/layout_common_actionbar.xml" value="0.25826772217367405" />
+        <entry key="app/src/main/res/layout/layout_common_error.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/layout_common_key_board.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_transaction_failed.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/layout_transaction_status.xml" value="0.1578125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

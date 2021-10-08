@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tvEnterYourPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_the_amount_to_withdraw"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="italic|bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/keyboard"/>
+
+        <EditText
+            android:id="@+id/etNumberInputBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="0.00"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@{transactionViewmodel.amountDisplayText}"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:letterSpacing="0.1"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="15dp"
+            android:clickable="false"
+            android:enabled="false"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/darkblue"
+            android:paddingBottom="15dp"
+            android:background="@drawable/background_password_input"
+            app:layout_constraintTop_toBottomOf="@+id/tvEnterYourPin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/tvErrorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/please_enter_in_multiples_of_100"
+            android:textColor="@color/red"
+            android:textSize="17sp"
+            android:textStyle="italic|bold"
+            android:gravity="center"
+            android:visibility="@{transactionViewmodel.currencyError ? View.VISIBLE: View.GONE}"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/etNumberInputBox"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹ "
+            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/darkblue"
+            app:layout_constraintTop_toTopOf="@+id/etNumberInputBox"
+            app:layout_constraintStart_toStartOf="@+id/etNumberInputBox"
+            app:layout_constraintBottom_toBottomOf="@+id/etNumberInputBox"/>
+
+        <include
+            android:id="@+id/keyboard"
+            layout="@layout/layout_common_key_board"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/glGuideline"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <TextView
+            android:id="@+id/tvExit"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_blue_card"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/cancel"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:onClick="@{(v)-> transactionViewmodel.onCancel(v)}"
+            app:layout_constraintTop_toTopOf="@id/keyboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/glGuideline"/>
+
+
+        <TextView
+            android:id="@+id/tvConfirm"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_button"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/confirm"
+            android:textSize="18sp"
+            android:onClick="@{(v)->transactionViewmodel.onSubmitClick(v)}"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tvExit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/glGuideline"/>
+
+
+        <include
+            android:id="@+id/layoutTransactionCompleted"
+            layout="@layout/layout_transaction_status"
+            android:visibility="@{transactionViewmodel.transactionProcessed? View.VISIBLE: View.GONE}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="transactionViewmodel"
+            type="com.proj.mobileAtm.transaction.model.viewmodel.TransactionViewModel" />
+    </data>
+
+</layout>
